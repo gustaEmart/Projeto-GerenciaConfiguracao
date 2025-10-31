@@ -1,1 +1,9 @@
-print('Sistema de Gerência de Configuração iniciado')
+# app.py
+
+def hello_world():
+    """Hello world"""
+    print("Hello, world!")
+
+
+if __name__ == "__main__":
+    hello_world()

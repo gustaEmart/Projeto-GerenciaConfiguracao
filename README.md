@@ -20,4 +20,5 @@ Este projeto demonstra o uso de versionamento no GitHub.
 
 \## Histórico de Versões
 
-* Início do projeto
+* v1.0 Início do projeto
+* v1.1 Hello World
