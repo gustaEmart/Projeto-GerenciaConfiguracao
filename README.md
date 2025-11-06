@@ -3,7 +3,6 @@
 Este projeto demonstra o uso de versionamento no GitHub.
 
 
-
 \## Integrantes
 
 * Gustavo Emanuel
@@ -13,8 +12,6 @@ Este projeto demonstra o uso de versionamento no GitHub.
 * Pedro Matheus
 * Jhmonatha Maguila
 * Abner Cebola
-
-
 
 
 
