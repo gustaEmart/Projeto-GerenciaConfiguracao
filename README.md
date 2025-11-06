@@ -19,3 +19,5 @@ Este projeto demonstra o uso de versionamento no GitHub.
 
 * v1.0 Início do projeto
 * v1.1 Hello World
+* v1.1.1 Adição da biblioteca MATH e remoção da função Hello "World"
+* v1.2.0 Correções de Sintaxe e adições de novas funções teste
