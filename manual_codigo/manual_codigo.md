@@ -1,14 +1,29 @@
-Manual do Código - Este documento descreve a estrutura e funcionamento do código-fonte.
+Versão 1.1
 
-#v1.1 função adicionada - Hello World
-===
 
-#v1.1.1 bliblioteca importada - Math (implementação de calculos matemáticos)
+Alteração: Adicionada a função Hello World.
+Descrição: Implementação inicial de uma função simples para exibir uma mensagem na tela, servindo como base para testes e validação do ambiente de execução.
 
-#v1.2.0 função adicionada:
 
-Função round() pra fins de comparação com as outras, já que ela transforma o número em inteiro de forma diferente
+Versão 1.1.1
 
-Tratamento de sintaxe pra corrigir os float(>>>>imput('Digite um valor: ')) e o fromat(num, int(num)) e sua lógica errônea, já que a função format() em Python estava sendo utilizada de forma incorreta. Assim decidi trocar para uma lógica que utiliza f-strings para simplificar o código para quem for fazer a leitura
 
-Adição de uma contagem limite apenas por puro teste de funcionalidades
+Alteração: Importação da biblioteca math.
+Descrição: Inclusão da biblioteca matemática nativa do Python, visando oferecer suporte a operações e cálculos matemáticos necessários para futuras implementações.
+
+
+Versão 1.2.0
+
+
+Alterações Principais:
+
+Adição da função round():
+Implementada para permitir comparação com outros métodos de conversão numérica, destacando sua forma distinta de arredondar valores para inteiros.
+
+Correção de tratamento de sintaxe:
+Ajustado o uso incorreto das expressões float(input('Digite um valor: ')) e format(num, int(num)).
+A função format() estava sendo aplicada de maneira inadequada; portanto, foi substituída por f-strings, tornando o código mais legível e simples para manutenção.
+
+Implementação de contagem limite (teste):
+Adicionada uma contagem de limite apenas para fins de teste de funcionalidades e verificação do comportamento do código durante execuções controladas.
+
