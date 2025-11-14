@@ -1,9 +1,10 @@
-# app.py
-# Um toolkit de matemática com várias funcionalidades.
+# toolkit.py
+# Um toolkit de matemática com várias funcionalidades;
 # Código original de Kauan e Pedro, refatorado e organizado por Kauan;
 
 import math
 import random
+import turtle 
 
 # ==============================================================================
 # 1. FUNÇÕES DO CONVERSOR NUMÉRICO
@@ -103,10 +104,7 @@ def exemplo_probabilidade_combinatoria():
     """Demonstra o cálculo de probabilidade usando combinatória (cartas de baralho)."""
     print("\n--- Exemplo: Probabilidade de Tirar 2 Reis de um Baralho ---")
     
-    # Total de maneiras de pegar 2 cartas de 52
     total_combinacoes = math.comb(52, 2)
-    
-    # Total de maneiras de pegar 2 Reis de 4
     combinacoes_favoraveis = math.comb(4, 2)
     
     probabilidade = combinacoes_favoraveis / total_combinacoes
@@ -135,6 +133,62 @@ def exemplo_probabilidade_simulacao():
     print(f"A probabilidade estimada é de {probabilidade_estimada:.4f} ou aproximadamente {probabilidade_estimada:.2%}")
 
 # ==============================================================================
+# 4. FUNÇÕES DE DESENHO GRÁFICO (NOVA SEÇÃO)
+# ==============================================================================
+
+def desenhar_quadrado(t, tamanho, cor):
+    """Desenha um quadrado de um determinado tamanho e cor."""
+    t.fillcolor(cor)
+    t.begin_fill()
+    for _ in range(4):
+        t.forward(tamanho)
+        t.left(90)
+    t.end_fill()
+
+def desenhar_piramide(t, tamanho_base, niveis):
+    """Desenha uma pirâmide de quadrados coloridos."""
+    cores = ["#FF5733", "#33FF57", "#3357FF", "#FF33A1", "#A133FF",
+             "#33FFA1", "#FFC300", "#C70039", "#900C3F", "#581845"]
+    
+    for i in range(niveis, 0, -1):
+        y = (niveis - i) * tamanho_base
+        cor_nivel = random.choice(cores)
+        
+        for j in range(i):
+            x = (-(i / 2.0) * tamanho_base) + (j * tamanho_base)
+            t.penup()
+            t.goto(x, y)
+            t.pendown()
+            desenhar_quadrado(t, tamanho_base, cor_nivel)
+
+def executar_desenho_piramide():
+    """Configura e executa o desenho da pirâmide com a biblioteca turtle."""
+    print("\n--- Iniciando o Desenho da Pirâmide Colorida ---")
+    print("Uma nova janela será aberta para o desenho. Feche-a para voltar ao menu.")
+    
+    try:
+        tela = turtle.Screen()
+        tela.bgcolor("lightblue")
+        tela.title("Pirâmide de Quadrados Coloridos")
+        
+        # Oculta o ícone da janela principal do turtle enquanto o desenho está ativo
+        # para evitar confusão com o menu do console.
+        turtle.hideturtle()
+
+        tartaruga = turtle.Turtle()
+        tartaruga.speed(0)
+        tartaruga.hideturtle()
+
+        desenhar_piramide(tartaruga, 30, 8)
+        
+        # Mantém a janela de desenho aberta
+        tela.mainloop()
+        
+    except turtle.Terminator:
+        # Erro esperado quando o usuário fecha a janela do turtle manualmente
+        print("\nJanela de desenho fechada. Voltando ao menu principal.")
+
+# ==============================================================================
 # MENU PRINCIPAL E EXECUÇÃO
 # ==============================================================================
 
@@ -147,6 +201,7 @@ def main():
         print("3. Exemplo: Probabilidade Simples (Dado)")
         print("4. Exemplo: Probabilidade com Combinatória (Cartas)")
         print("5. Exemplo: Probabilidade por Simulação (Soma de Dados)")
+        print("6. Desenhar Pirâmide Colorida") # <--- Nova opção no menu
         print("0. Sair do Programa")
         
         escolha = input(">> Escolha uma opção: ")
@@ -161,6 +216,8 @@ def main():
             exemplo_probabilidade_combinatoria()
         elif escolha == '5':
             exemplo_probabilidade_simulacao()
+        elif escolha == '6': # <--- Adicionada a lógica para a nova opção
+            executar_desenho_piramide()
         elif escolha == '0':
             print("Encerrando o programa. Até logo!")
             break
