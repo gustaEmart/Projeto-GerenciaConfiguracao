@@ -1,6 +1,6 @@
 # app.py
 # Um toolkit de matemática com várias funcionalidades.
-# Código original de Kauan e Pedro, refatorado e organizado por Kauan.
+# Código original de Kauan e Pedro, refatorado e organizado por Kauan;
 
 import math
 import random
