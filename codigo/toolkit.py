@@ -187,6 +187,64 @@ def executar_desenho_piramide():
     except turtle.Terminator:
         # Erro esperado quando o usuário fecha a janela do turtle manualmente
         print("\nJanela de desenho fechada. Voltando ao menu principal.")
+# ======================================================================
+# FUNÇÕES DE ESTATÍSTICA BÁSICA
+# ======================================================================
+
+def analisar_lista_numeros():
+    """
+    Lê uma lista de números do usuário e calcula:
+    - quantidade
+    - média
+    - mediana
+    - variância
+    - desvio padrão
+    """
+    print("\n--- Análise de Lista de Números ---")
+    print("Digite os números separados por espaço. Ex: 1 2.5 3 10")
+    
+    entrada = input("Números: ").strip()
+    if not entrada:
+        print("Nenhum valor digitado.")
+        return
+    
+    try:
+        valores = [float(x) for x in entrada.split()]
+    except ValueError:
+        print("Erro: certifique-se de digitar apenas números válidos separados por espaço.")
+        return
+    
+    n = len(valores)
+    if n == 0:
+        print("Nenhum valor válido encontrado.")
+        return
+    
+    # Ordenar para calcular a mediana
+    valores_ordenados = sorted(valores)
+    
+    # Média
+    media = sum(valores) / n
+    
+    # Mediana
+    if n % 2 == 1:
+        mediana = valores_ordenados[n // 2]
+    else:
+        m1 = valores_ordenados[n // 2 - 1]
+        m2 = valores_ordenados[n // 2]
+        mediana = (m1 + m2) / 2
+    
+    # Variância (populacional)
+    variancia = sum((x - media) ** 2 for x in valores) / n
+    
+    # Desvio padrão
+    desvio_padrao = math.sqrt(variancia)
+    
+    print(f"\nQuantidade de valores: {n}")
+    print(f"Valores ordenados: {valores_ordenados}")
+    print(f"Média: {media:.4f}")
+    print(f"Mediana: {mediana:.4f}")
+    print(f"Variância: {variancia:.4f}")
+    print(f"Desvio padrão: {desvio_padrao:.4f}")
 
 # ==============================================================================
 # MENU PRINCIPAL E EXECUÇÃO
@@ -202,6 +260,8 @@ def main():
         print("4. Exemplo: Probabilidade com Combinatória (Cartas)")
         print("5. Exemplo: Probabilidade por Simulação (Soma de Dados)")
         print("6. Desenhar Pirâmide Colorida") # <--- Nova opção no menu
+        print("7. Analisar Lista de Números (média, mediana, desvio)")
+        
         print("0. Sair do Programa")
         
         escolha = input(">> Escolha uma opção: ")
@@ -218,6 +278,8 @@ def main():
             exemplo_probabilidade_simulacao()
         elif escolha == '6': # <--- Adicionada a lógica para a nova opção
             executar_desenho_piramide()
+        elif escolha == '7':
+            analisar_lista_numeros()
         elif escolha == '0':
             print("Encerrando o programa. Até logo!")
             break
