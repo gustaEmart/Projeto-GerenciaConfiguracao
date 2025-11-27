@@ -246,6 +246,42 @@ def analisar_lista_numeros():
     print(f"Variância: {variancia:.4f}")
     print(f"Desvio padrão: {desvio_padrao:.4f}")
 
+# ======================================================================
+# 6. FUNÇÃO DE COMBINAÇÕES (nCk)
+# ======================================================================
+
+def calculadora_combinacoes():
+    """
+    Calcula o número de combinações C(n, k) = n! / (k! (n-k)!).
+    Usa math.comb, mas faz validação de entrada antes.
+    """
+    print("\n--- Calculadora de Combinações (n C k) ---")
+    print("Informe valores inteiros não negativos, com n >= k.")
+    
+    try:
+        n = int(input("Valor de n (total de itens): "))
+        k = int(input("Valor de k (itens escolhidos): "))
+    except ValueError:
+        print("Erro: você deve digitar números inteiros.")
+        return
+    
+    if n < 0 or k < 0:
+        print("Erro: n e k devem ser inteiros não negativos.")
+        return
+    
+    if k > n:
+        print("Erro: k não pode ser maior que n.")
+        return
+    
+    try:
+        resultado = math.comb(n, k)
+    except AttributeError:
+        # math.comb existe a partir do Python 3.8; se não existir:
+        resultado = math.factorial(n) // (math.factorial(k) * math.factorial(n - k))
+    
+    print(f"\nC({n}, {k}) = {resultado}")
+
+
 # ==============================================================================
 # MENU PRINCIPAL E EXECUÇÃO
 # ==============================================================================
@@ -261,6 +297,7 @@ def main():
         print("5. Exemplo: Probabilidade por Simulação (Soma de Dados)")
         print("6. Desenhar Pirâmide Colorida") # <--- Nova opção no menu
         print("7. Analisar Lista de Números (média, mediana, desvio)")
+        print("8. Calculadora de Combinações (n C k)")
         
         print("0. Sair do Programa")
         
@@ -280,6 +317,8 @@ def main():
             executar_desenho_piramide()
         elif escolha == '7':
             analisar_lista_numeros()
+        elif escolha == '8':
+            calculadora_combinacoes()
         elif escolha == '0':
             print("Encerrando o programa. Até logo!")
             break
