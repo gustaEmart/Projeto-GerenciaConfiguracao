@@ -10,7 +10,7 @@ Este projeto demonstra o uso de versionamento no GitHub.
 * Kauan Almeida
 * Felipe Guimarães - Jesus
 * Pedro Matheus
-* Jhmonatha Maguila
+* Jhmonatha Maguila (gay)
 * Abner Cebola
 
 
